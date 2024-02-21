@@ -24,7 +24,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Snippets API",
       default_version='v1',
-	  url='https://django-rest-starter-production-59f0.up.railway.app/swagger/',
+	  url='https://django-rest-starter-production-59f0.up.railway.app/api/v1"',
       description="Test description",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="contact@snippets.local"),
