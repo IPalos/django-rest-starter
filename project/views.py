@@ -14,7 +14,8 @@ class ProjectTypeView(ViewSet):
 	@swagger_auto_schema( responses={200:ProjectTypeGetSerializer(many=True)})
 	def list(self,request):
 		query = get_supabase_client("prj").table('proyecto_tipo').select("*").order("id").eq("is_active",True).execute()
-		return Response(query)
+		print(query.data)
+		return Response(query.data)
 	
 	@swagger_auto_schema( request_body=ProjectTypeSerializer)
 	def create(self,request):
