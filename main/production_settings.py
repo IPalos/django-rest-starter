@@ -29,6 +29,8 @@ CSRF_TRUSTED_ORIGINS = [
 	"https://django-rest-starter-production-59f0.up.railway.app/" ,
 	"https://sxydjckmbtwwvktihzxa.supabase.co"
     # NOTE: Place your custom url here if any
+    'http://localhost',
+    'http://localhost:3000',
 ]
 
 
