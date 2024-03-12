@@ -14,9 +14,8 @@ class ProjectTypeView(ViewSet):
 	@swagger_auto_schema( responses={200:ProjectTypeGetSerializer(many=True)})
 	def list(self,request):
 		query = get_supabase_client("prj").table('proyecto_tipo').select("*").order("id").eq("is_active",True).execute()
-		print(query.data)
 		return Response(query.data)
-	
+
 	@swagger_auto_schema( request_body=ProjectTypeSerializer)
 	def create(self,request):
 		request_data = ProjectTypeSerializer(data=json.loads(request.body))
@@ -24,9 +23,9 @@ class ProjectTypeView(ViewSet):
 		query = get_supabase_client("prj").table("proyecto_tipo").insert(request_data.data).execute()
 		return Response(query)
 	
-	@swagger_auto_schema
-	def destroy(self, pk):
-		query = get_supabase_client("prj").table("proyecto_tipo").update({"is_active":False}).eq("id",pk).execute()
+	@swagger_auto_schema(query_serializer=None, responses={204: None})
+	def destroy(self, request, pk=None):
+		query = get_supabase_client("prj").table("proyecto_tipo").update({"is_active": False}).eq("id", pk).execute()
 		return Response(query)
 	
 	@swagger_auto_schema(request_body=ProjectTypeSerializer)
@@ -41,8 +40,8 @@ class ProjectView(ViewSet):
 	
 	@swagger_auto_schema( responses={200:ProjectGetSerializer(many=True)})
 	def list(self,request):
-		query = get_supabase_client("prj").table('proyectos').select("*").order("proyecto_id").eq("is_active",True).execute()
-		return Response(query)
+		query = get_supabase_client("prj").table('proyectos_lista').select("*").order("id").eq("is_active",True).execute()
+		return Response(query.data)
 	
 	@swagger_auto_schema( request_body=ProjectSerializer)
 	def create(self,request):
@@ -51,9 +50,9 @@ class ProjectView(ViewSet):
 		query = get_supabase_client("prj").table("proyectos").insert(request_data.data).execute()
 		return Response(query)
 	
-	@swagger_auto_schema
-	def destroy(self, pk):
-		query = get_supabase_client("prj").table("proyectos").update({"is_active":False}).eq("proyecto_id",pk).execute()
+	@swagger_auto_schema(query_serializer=None, responses={204: None})
+	def destroy(self, request, pk=None):
+		query = get_supabase_client("prj").table("proyectos").update({"is_active": False}).eq("id", pk).execute()
 		return Response(query)
 	
 	@swagger_auto_schema(request_body=ProjectSerializer)

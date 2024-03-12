@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     "corsheaders",
 	"drf_yasg",
 	"supabase_auth",
-	"project"
+	"project",
+	"cat"
 ]
 
 MIDDLEWARE = [
