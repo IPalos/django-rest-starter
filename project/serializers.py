@@ -26,3 +26,13 @@ class ProjectSerializer(serializers.Serializer):
 
 class ProjectGetSerializer(ProjectSerializer):
 	proyecto_id = serializers.IntegerField()
+
+# GATE PROYECTO
+	
+class ProjectGateSerializer(serializers.Serializer):
+	proyecto_id = serializers.IntegerField()
+	gate_tipo_id = serializers.IntegerField()
+	fecha_inicio_plan = serializers.DateField()
+	fecha_fin_plan = serializers.DateField()
+	fecha_inicio_real = serializers.DateField()
+	fecha_fin_real = serializers.DateField()
